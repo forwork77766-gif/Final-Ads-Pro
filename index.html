@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سوشيال برو - زيادة متابعين حقيقيين</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #0b0f19; color: #f1f5f9; line-height: 1.7; font-size: 16px; }
+        
+        /* التعديل الثاني: الشريط الدوار */
+        .ticker-wrap { width: 100%; background: linear-gradient(90deg, #1e1b4b, #312e81, #1e1b4b); color: #fbbf24; overflow: hidden; height: 42px; line-height: 42px; position: relative; z-index: 60; border-bottom: 1px solid rgba(251, 191, 36, 0.3); font-weight: 700; font-size: 14px; }
+        .ticker { display: inline-block; white-space: nowrap; padding-right: 100%; animation: ticker 35s linear infinite; }
+        .ticker__item { display: inline-block; padding: 0 20px; }
+        @keyframes ticker {
+            0% { transform: translate3d(100%, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
+        header { background: #111827; box-shadow: 0 4px 20px rgba(0,0,0,0.5); position: sticky; top: 0; z-index: 50; border-bottom: 1px solid #1f2937; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .nav-bar { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; }
+        .logo { display: flex; align-items: center; gap: 10px; font-weight: 900; font-size: 22px; color: #ffffff; }
+        .logo span.icon { background: #6366f1; color: white; padding: 6px 12px; border-radius: 12px; box-shadow: 0 0 12px rgba(99, 102, 241, 0.5); }
+        nav a { margin-left: 20px; text-decoration: none; color: #cbd5e1; font-weight: 700; transition: 0.2s; font-size: 15px; }
+        nav a:hover { color: #818cf8; }
+        .btn { background: linear-gradient(135deg, #6366f1, #4f46e5); color: white; padding: 12px 24px; border-radius: 12px; font-weight: bold; text-decoration: none; display: inline-block; border: none; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4); }
+        .btn:hover { background: linear-gradient(135deg, #4f46e5, #4338ca); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(79, 70, 229, 0.6); }
+        
+        .hero { background: radial-gradient(circle at top, #1e1b4b 0%, #0f172a 100%); color: white; padding: 80px 20px; border-bottom: 1px solid #1f2937; }
+        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .hero h1 { font-size: 40px; font-weight: 900; margin-bottom: 20px; line-height: 1.3; color: #ffffff; }
+        .hero h1 span { color: #fbbf24; text-shadow: 0 0 10px rgba(251, 191, 36, 0.3); }
+        .hero p { font-size: 18px; color: #94a3b8; margin-bottom: 30px; font-weight: 500; }
+        .hero-badge { background: rgba(99, 102, 241, 0.2); color: #a5b4fc; padding: 6px 16px; border-radius: 20px; font-size: 14px; font-weight: 700; display: inline-block; margin-bottom: 16px; border: 1px solid rgba(165, 180, 252, 0.3); }
+        
+        .notice-bar { background: #1e1b4b; border-top: 1px solid #3730a3; border-bottom: 1px solid #3730a3; padding: 18px 20px; }
+        .notice-content { max-width: 1000px; margin: 0 auto; display: flex; align-items: center; gap: 15px; color: #fef3c7; }
+        .notice-content h3 { font-size: 16px; font-weight: 900; color: #fbbf24; }
+        .notice-content p { font-size: 15px; font-weight: 700; color: #e2e8f0; }
+
+        .section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-header h2 { font-size: 32px; font-weight: 900; color: #ffffff; margin-bottom: 12px; }
+        .section-header p { color: #94a3b8; font-size: 16px; font-weight: 600; }
+
+        .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+        .package-card { background: #111827; border: 1px solid #1f2937; border-radius: 24px; padding: 30px 20px; display: flex; flex-direction: column; justify-content: space-between; transition: 0.3s; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .package-card:hover { transform: translateY(-5px); border-color: #6366f1; box-shadow: 0 15px 35px rgba(99, 102, 241, 0.2); }
+        .package-card.featured { background: linear-gradient(180deg, #1e1b4b 0%, #111827 100%); color: white; border: 2px solid #fbbf24; box-shadow: 0 0 25px rgba(251, 191, 36, 0.2); }
+        .package-card.featured h3, .package-card.featured p, .package-card.featured li { color: #ffffff; }
+        .badge-pop { position: absolute; top: -14px; right: 20px; background: #fbbf24; color: #0f172a; font-size: 12px; font-weight: 900; padding: 4px 12px; border-radius: 20px; box-shadow: 0 2px 8px rgba(251, 191, 36, 0.4); }
+        
+        .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .review-card { background: #111827; padding: 22px; border-radius: 20px; border: 1px solid #1f2937; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3); }
+        .review-card p { color: #cbd5e1; font-size: 14px; font-weight: 600; }
+        .review-card h4 { color: #ffffff; font-weight: 800; }
+        .review-card span { color: #64748b; font-weight: 700; }
+
+        /* التعديل الثالث: تنسيق قسم الصور الإفتراضية قبل وبعد */
+        .before-after-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .ba-card { background: #111827; border: 1px solid #1f2937; border-radius: 20px; overflow: hidden; padding: 20px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        .ba-card h3 { font-size: 16px; color: #818cf8; margin-bottom: 15px; font-weight: 800; }
+        .ba-comparison { display: flex; gap: 10px; justify-content: center; align-items: center; }
+        .ba-box { flex: 1; background: #1e293b; border-radius: 12px; padding: 15px 10px; border: 1px solid #334155; }
+        .ba-box.after { background: #064e3b; border-color: #10b981; }
+        .ba-box span { display: block; font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 5px; }
+        .ba-box.after span { color: #a7f3d0; }
+        .ba-box strong { display: block; font-size: 20px; font-weight: 900; color: #ffffff; }
+        .ba-arrow { font-size: 20px; color: #fbbf24; font-weight: bold; }
+
+        footer { background: #030712; color: #94a3b8; padding: 40px 20px; text-align: center; font-weight: 600; border-top: 1px solid #1f2937; }
+
+        /* Payment Tabs & Modal */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(3, 7, 18, 0.85); backdrop-filter: blur(5px); display: none; align-items: center; justify-content: center; z-index: 100; padding: 20px; }
+        .modal-box { background: #111827; width: 100%; max-width: 500px; border-radius: 24px; padding: 30px; max-height: 90vh; overflow-y: auto; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7); border: 1px solid #1f2937; color: #f8fafc; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 14px; font-weight: 800; margin-bottom: 6px; color: #e2e8f0; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #3730a3; background: #1e1b4b; border-radius: 12px; font-size: 14px; font-weight: 600; color: #ffffff; }
+        .form-group input::placeholder { color: #818cf8; }
+        
+        .payment-tabs { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 2px solid #1f2937; padding-bottom: 10px; }
+        .pay-tab-btn { flex: 1; padding: 10px 8px; font-size: 13px; font-weight: 800; border-radius: 10px; border: 1px solid #3730a3; background: #1e1b4b; cursor: pointer; text-align: center; color: #c7d2fe; }
+        .pay-tab-btn.active { background: #6366f1; color: white; border-color: #6366f1; }
+
+        .payment-info-box { background: rgba(6, 78, 59, 0.4); border: 1px solid #059669; border-radius: 12px; padding: 15px; margin-bottom: 18px; font-size: 13px; color: #a7f3d0; font-weight: 700; }
+        .payment-info-box strong { color: #ffffff; font-size: 14px; }
+
+        /* Floating Support Chat Button */
+        .floating-chat { position: fixed; bottom: 20px; left: 20px; z-index: 99; background: #6366f1; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 20px rgba(99,102,241,0.5); cursor: pointer; transition: 0.3s; }
+        .floating-chat:hover { transform: scale(1.1); background: #4f46e5; }
+
+        @media (max-width: 768px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- التعديل الثاني: الشريط الدوار بطلاقة -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <div class="ticker__item">🔥 يطلب الآن 248 عميل خدمات التزويد من المنصة</div>
+            <div class="ticker__item">⭐ أستاذ أحمد محمود: "خدمة ممتازة ووصلني 30 ألف متابع تيك توك بنجاح!"</div>
+            <div class="ticker__item">🚀 كابتن محمد علي: "أفضل موقع لزيادة مشتركين اليوتيوب وبدء الربح"</div>
+            <div class="ticker__item">✨ إجمالي العملاء الحاليين الذين يتلقون الخدمات اليوم: 1,420 عميل نشط</div>
+            <div class="ticker__item">💬 أستاذة سارة هاني: "سرعة ومصداقية تامة في التنفيد شكراً سوشيال برو"</div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container nav-bar">
+            <div class="logo">
+                <span class="icon">🚀</span>
+                <span>سوشيال برو</span>
+            </div>
+            <nav>
+                <a href="#packages">باقات السوشيال</a>
+                <a href="#youtube-packages">باقات اليوتيوب</a>
+                <a href="#before-after">نتائج الزيادة</a>
+                <a href="#features">المميزات</a>
+                <a href="#steps">خطوات البدء</a>
+                <a href="#reviews">آراء العملاء</a>
+                <a href="#about">من نحن</a>
+            </nav>
+            <a href="#packages" class="btn">اختر باقتك الآن</a>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-grid">
+            <div>
+                <span class="hero-badge">✨ متابعين عرب ومصريين 100% حقيقيين</span>
+                <h1>ضاعف حضورك الرقمي على <span>فيسبوك، تيك توك، انستغرام، ويوتیوب</span></h1>
+                <p>منصة موثوقة وآمنة تماماً لزيادة متابعيك ومشتركيك بأعلى جودة وبأفضل الأسعار التنافسية في مصر والعالم العربي.</p>
+                <a href="#packages" class="btn" style="background: #fbbf24; color: #0f172a; margin-left: 10px; font-weight: 900;">عرض الباقات والأسعار</a>
+            </div>
+            <div style="background: rgba(255,255,255,0.03); padding: 25px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.08);">
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 12px;">
+                    <span style="font-size: 26px;">📱</span>
+                    <div>
+                        <h4 style="color: white; font-weight: bold;">تيك توك (TikTok)</h4>
+                        <p style="font-size: 12px; color: #94a3b8;">متابعين عرب حقيقيين بتفاعل قوي</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 12px;">
+                    <span style="font-size: 26px;">📸</span>
+                    <div>
+                        <h4 style="color: white; font-weight: bold;">انستغرام (Instagram)</h4>
+                        <p style="font-size: 12px; color: #94a3b8;">متابعين مصريين متفاعلين لصفحتك</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 12px;">
+                    <span style="font-size: 26px;">👥</span>
+                    <div>
+                        <h4 style="color: white; font-weight: bold;">فيسبوك (Facebook)</h4>
+                        <p style="font-size: 12px; color: #94a3b8;">أصدقاء ومتابعين لصفحات وحسابات الشخصية</p>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 15px;">
+                    <span style="font-size: 26px;">▶️</span>
+                    <div>
+                        <h4 style="color: white; font-weight: bold;">يوتيوب (YouTube)</h4>
+                        <p style="font-size: 12px; color: #94a3b8;">مشتركين حقيقيين لقناتك وزيادة الأرباح</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notice Bar -->
+    <div class="notice-bar">
+        <div class="notice-content">
+            <span style="font-size: 24px;">⚠️</span>
+            <div>
+                <h3>تنويه هام جداً لضمان الجودة والأمان:</h3>
+                <p>يتم تنفيذ وتفعيل زيادة المتابعين والمشتركين تدريجياً وبشكل آمن تماماً لحساباتكم خلال مدة تتراوح من <u>يومين إلى 3 أيام</u> كحد أقصى.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Steps Section -->
+    <section id="steps" class="section">
+        <div class="section-header">
+            <h2>خطوات سريعة وسهلة</h2>
+            <p>البداية بسيطة 3 خطوات وتبدأ داخل المنصة بكل سهولة وسرعة.</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+            <div style="background: #111827; padding: 30px; border-radius: 20px; border: 1px solid #1f2937; text-align: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);">
+                <div style="width: 50px; height: 50px; background: #1e1b4b; color: #818cf8; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: bold; margin: 0 auto 15px auto; border: 1px solid #3730a3;">1</div>
+                <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 10px; color: #ffffff;">اختر الباقة المناسبة</h3>
+                <p style="color: #94a3b8; font-size: 15px; font-weight: 600;">تصفح الباقات المتاحة لانستغرام، تيك توك، فيسبوك، أو يوتيوب واضغط على "اطلب الباقة الآن".</p>
+            </div>
+            <div style="background: #111827; padding: 30px; border-radius: 20px; border: 1px solid #1f2937; text-align: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);">
+                <div style="width: 50px; height: 50px; background: #1e1b4b; color: #818cf8; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: bold; margin: 0 auto 15px auto; border: 1px solid #3730a3;">2</div>
+                <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 10px; color: #ffffff;">أتمم الدفع وارفع الأسكرين</h3>
+                <p style="color: #94a3b8; font-size: 15px; font-weight: 600;">قم بالتحويل عبر إنستا باي أو المحافظ الذكية وارفع صورة إيصال التحويل في نموذج الطلب.</p>
+            </div>
+            <div style="background: #111827; padding: 30px; border-radius: 20px; border: 1px solid #1f2937; text-align: center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);">
+                <div style="width: 50px; height: 50px; background: #1e1b4b; color: #818cf8; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: bold; margin: 0 auto 15px auto; border: 1px solid #3730a3;">3</div>
+                <h3 style="font-size: 18px; font-weight: 800; margin-bottom: 10px; color: #ffffff;">استلم المتابعين والمشتركين</h3>
+                <p style="color: #94a3b8; font-size: 15px; font-weight: 600;">ابدأ بمتابعة تفعيل طلبك وزيادة متابعيك ومشتركيك خلال من يومين لـ 3 أيام كحد أقصى.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Packages Section -->
+    <section id="packages" class="section" style="background: #0f172a; max-width: 100%; border-top: 1px solid #1f2937; border-bottom: 1px solid #1f2937;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="section-header">
+                <h2>باقات التزويد الحصرية (فيسبوك - تيك توك - انستغرام)</h2>
+                <p>اختر الباقة المناسبة لاحتياجاتك واستمتع بأقوى الأسعار.</p>
+            </div>
+
+            <div class="packages-grid">
+                <!-- 10k -->
+                <div class="package-card">
+                    <div>
+                        <span style="background: #1e1b4b; color: #a5b4fc; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 15px; border: 1px solid #3730a3;">الباقة الأساسية</span>
+                        <h3 style="font-size: 22px; font-weight: 900; margin-bottom: 8px; color: #ffffff;">10,000 متابع</h3>
+                        <p style="color: #94a3b8; font-size: 14px; font-weight: 700; margin-bottom: 20px;">مناسبة جداً للبدء بقوة وزيادة موثوقية حسابك.</p>
+                        <div style="font-size: 26px; font-weight: 900; color: #818cf8; margin-bottom: 20px;">399 <span style="font-size: 14px; font-weight: 800; color: #94a3b8;">جنيه فقط</span></div>
+                        <ul style="list-style: none; font-size: 14px; font-weight: 700; color: #cbd5e1; margin-bottom: 25px; line-height: 2;">
+                            <li>✅ متابعين عرب ومصريين</li>
+                            <li>✅ تنفيذ خلال من يومين لـ 3 أيام</li>
+                            <li>✅ ضمان عدم النقصان</li>
+                        </ul>
+                    </div>
+                    <button onclick="openCheckout('10,000 متابع', '399 جنيه')" class="btn" style="width: 100%; text-align: center;">اطلب الباقة الآن</button>
+                </div>
+
+                <!-- 30k -->
+                <div class="package-card featured">
+                    <span class="badge-pop">الأكثر طلباً 🔥</span>
+                    <div>
+                        <span style="background: rgba(255,255,255,0.1); color: #fbbf24; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 15px; border: 1px solid rgba(251, 191, 36, 0.4);">الباقة الاحترافية</span>
+                        <h3 style="font-size: 22px; font-weight: 900; margin-bottom: 8px;">30,000 متابع</h3>
+                        <p style="font-size: 14px; font-weight: 700; margin-bottom: 20px; color: #cbd5e1;">الخيار الأمثل لصناع المحتوى والمتاجر.</p>
+                        <div style="font-size: 26px; font-weight: 900; color: #fbbf24; margin-bottom: 20px;">599 <span style="font-size: 14px; font-weight: 800; color: #cbd5e1;">جنيه فقط</span></div>
+                        <ul style="list-style: none; font-size: 14px; font-weight: 700; margin-bottom: 25px; line-height: 2; color: #f1f5f9;">
+                            <li>✅ متابعين عرب ومصريين</li>
+                            <li>✅ تنفيذ خلال من يومين لـ 3 أيام</li>
+                            <li>✅ ضمان كامل على الجودة</li>
+                        </ul>
+                    </div>
+                    <button onclick="openCheckout('30,000 متابع', '599 جنيه')" class="btn" style="width: 100%; background: #fbbf24; color: #0f172a; text-align: center; font-weight: 900;">اطلب الباقة الآن</button>
+                </div>
+
+                <!-- 50k -->
+                <div class="package-card">
+                    <div>
+                        <span style="background: #1e1b4b; color: #a5b4fc; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 15px; border: 1px solid #3730a3;">باقة التميز</span>
+                        <h3 style="font-size: 22px; font-weight: 900; margin-bottom: 8px; color: #ffffff;">50,000 متابع</h3>
+                        <p style="color: #94a3b8; font-size: 14px; font-weight: 700; margin-bottom: 20px;">انتشار واسع وقاعدة جماهيرية ضخمة.</p>
+                        <div style="font-size: 26px; font-weight: 900; color: #818cf8; margin-bottom: 20px;">1,100 <span style="font-size: 14px; font-weight: 800; color: #94a3b8;">جنيه فقط</span></div>
+                        <ul style="list-style: none; font-size: 14px; font-weight: 700; color: #cbd5e1; margin-bottom: 25px; line-height: 2;">
+                            <li>✅ متابعين عرب ومصريين</li>
+                            <li>✅ تنفيذ خلال من يومين لـ 3 أيام</li>
+                            <li>✅ ضمان عدم النقصان</li>
+                        </ul>
+                    </div>
+                    <button onclick="openCheckout('50,000 متابع', '1,100 جنيه')" class="btn" style="width: 100%; text-align: center;">اطلب الباقة الآن</button>
+                </div>
+
+                <!-- 100k -->
+                <div class="package-card">
+                    <div>
+                        <span style="background: rgba(251, 191, 36, 0.1); color: #fbbf24; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 15px; border: 1px solid rgba(251, 191, 36, 0.3);">باقة المشاهير</span>
+                        <h3 style="font-size: 22px; font-weight: 900; margin-bottom: 8px; color: #ffffff;">100,000 متابع</h3>
+                        <p style="color: #94a3b8; font-size: 14px; font-weight: 700; margin-bottom: 20px;">العملاق الملكي للسيطرة والانتشار.</p>
+                        <div style="font-size: 26px; font-weight: 900; color: #818cf8; margin-bottom: 20px;">2,000 <span style="font-size: 14px; font-weight: 800; color: #94a3b8;">جنيه فقط</span></div>
+                        <ul style="list-style: none; font-size: 14px; font-weight: 700; color: #cbd5e1; margin-bottom: 25px; line-height: 2;">
+                            <li>✅ متابعين عرب ومصريين</li>
+                            <li>✅ تنفيذ خلال من يومين لـ 3 أيام</li>
+                            <li>✅ ضمان ذهبي كامل</li>
+                        </ul>
+                    </div>
+                    <button onclick="openCheckout('100,000 متابع', '2,000 جنيه')" class="btn" style="width: 100%; text-align: center;">اطلب الباقة الآن</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- YouTube Packages Section (قسم تزويد يوتيوب حصري) -->
+    <section id="youtube-packages" class="section">
+        <div class="section-header">
+            <h2>باقات تزويد اليوتيوب الحصرية (YouTube)</h2>
+            <p>ارفع عدد مشتركين قناتك على اليوتيوب بأعلى جودة وثبات تام لسرعة تفعيل الأرباح.</p>
+        </div>
+
+        <div class="packages-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+            <!-- YT 1000 -->
+            <div class="package-card">
+                <div>
+                    <span style="background: rgba(220, 38, 38, 0.2); color: #fca5a5; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 15px; border: 1px solid rgba(220, 38, 38, 0.4);">باقة يوتيوب الأساسية</span>
+                    <h3 style="font-size: 22px; font-weight: 900; margin-bottom: 8px; color: #ffffff;">1000 مشترك</h3>
+                    <p style="color: #94a3b8; font-size: 14px; font-weight: 700; margin-bottom: 20px;">بداية مثالية لقناتك لتحقيق شروط اليوتيوب.</p>
+                    <div style="font-size: 26px; font-weight: 900; color: #ef4444; margin-bottom: 20px;">599 <span style="font-size: 14px; font-weight: 800; color: #94a3b8;">جنيه فقط</span></div>
+                    <ul style="list-style: none; font-size: 14px; font-weight: 700; color: #cbd5e1; margin-bottom: 25px; line-height: 2;">
+                        <li>✅ مشتركين حقيقيين وثابتين</li>
+                        <li>✅ تنفيذ خلال من يومين لـ 3 أيام</li>
+                        <li>✅ آمن تماماً على القناة والأرباح</li>
+                    </ul>
+                </div>
+                <button onclick="openCheckout('1000 مشترك يوتيوب', '599 جنيه')" class="btn" style="width: 100%; background: #dc2626; text-align: center;">اطلب باقة اليوتيوب</button>
+            </div>
+
+            <!-- YT 3000 -->
+            <div class="package-card" style="border: 2px solid #ef4444; background: linear-gradient(180deg, #1f1212 0%, #111827 100%);">
+                <span class="badge-pop" style="background: #dc2626; color: white;">قناة قوية 🚀</span>
+                <div>
+                    <span style="background: rgba(220, 38, 38, 0.2); color: #fca5a5; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 15px; border: 1px solid rgba(220, 38, 38, 0.4);">باقة يوتيوب الاحترافية</span>
+                    <h3 style="font-size: 22px; font-weight: 900; margin-bottom: 8px; color: #ffffff;">3000 مشترك</h3>
+                    <p style="color: #94a3b8; font-size: 14px; font-weight: 700; margin-bottom: 20px;">انتشار أوسع ومصداقية أعلى لمحتواك.</p>
+                    <div style="font-size: 26px; font-weight: 900; color: #ef4444; margin-bottom: 20px;">1,200 <span style="font-size: 14px; font-weight: 800; color: #94a3b8;">جنيه فقط</span></div>
+                    <ul style="list-style: none; font-size: 14px; font-weight: 700; color: #cbd5e1; margin-bottom: 25px; line-height: 2;">
+                        <li>✅ مشتركين حقيقيين وثابتين</li>
+                        <li>✅ تنفيذ خلال من يومين لـ 3 أيام</li>
+                        <li>✅ ضمان كامل وثبات تام</li>
+                    </ul>
+                </div>
+                <button onclick="openCheckout('3000 مشترك يوتيوب', '1200 جنيه')" class="btn" style="width: 100%; background: #dc2626; text-align: center;">اطلب باقة اليوتيوب</button>
+            </div>
+
+            <!-- YT 5000 -->
+            <div class="package-card">
+                <div>
+                    <span style="background: rgba(251, 191, 36, 0.1); color: #fbbf24; font-size: 12px; font-weight: 800; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 15px; border: 1px solid rgba(251, 191, 36, 0.3);">باقة يوتيوب الملكية</span>
+                    <h3 style="font-size: 22px; font-weight: 900; margin-bottom: 8px; color: #ffffff;">5000 مشترك</h3>
+                    <p style="color: #94a3b8; font-size: 14px; font-weight: 700; margin-bottom: 20px;">العملاق للسيطرة وتحقيق أعلى عوائد أرباح.</p>
+                    <div style="font-size: 26px; font-weight: 900; color: #ef4444; margin-bottom: 20px;">3,000 <span style="font-size: 14px; font-weight: 800; color: #94a3b8;">جنيه فقط</span></div>
+                    <ul style="list-style: none; font-size: 14px; font-weight: 700; color: #cbd5e1; margin-bottom: 25px; line-height: 2;">
+                        <li>✅ مشتركين حقيقيين وثابتين</li>
+                        <li>✅ تنفيذ خلال من يومين لـ 3 أيام</li>
+                        <li>✅ دعم فني خاص VIP لقناتك</li>
+                    </ul>
+                </div>
+                <button onclick="openCheckout('5000 مشترك يوتيوب', '3000 جنيه')" class="btn" style="width: 100%; background: #dc2626; text-align: center;">اطلب باقة اليوتيوب</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- التعديل الثالث: قسم قبل وبعد (6 صور / بطاقات توضيحية) -->
+    <section id="before-after" class="section" style="background: #0f172a; max-width: 100%; border-top: 1px solid #1f2937; border-bottom: 1px solid #1f2937;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="section-header">
+                <h2>نماذج تزويد الصفحات والحسابات (قبل وبعد)</h2>
+                <p>شاهد الفارق الحقيقي والأرقام الضخمة بعد تنفيذ طلبات التزويد لعملائنا.</p>
+            </div>
+            <div class="before-after-grid">
+                <!-- النموذج 1 -->
+                <div class="ba-card">
+                    <h3>حساب تيك توك (TikTok)</h3>
+                    <div class="ba-comparison">
+                        <div class="ba-box">
+                            <span>قبل التزويد</span>
+                            <strong>1,200</strong>
+                        </div>
+                        <div class="ba-arrow">➔</div>
+                        <div class="ba-box after">
+                            <span>بعد التزويد</span>
+                            <strong>31,200</strong>
+                        </div>
+                    </div>
+                </div>
+                <!-- النموذج 2 -->
+                <div class="ba-card">
+                    <h3>صفحة انستغرام (Instagram)</h3>
+                    <div class="ba-comparison">
+                        <div class="ba-box">
+                            <span>قبل التزويد</span>
+                            <strong>3,500</strong>
+                        </div>
+                        <div class="ba-arrow">➔</div>
+                        <div class="ba-box after">
+                            <span>بعد التزويد</span>
+                            <strong>53,500</strong>
+                        </div>
+                    </div>
+                </div>
+                <!-- النموذج 3 -->
+                <div class="ba-card">
+                    <h3>قناة يوتيوب (YouTube)</h3>
+                    <div class="ba-comparison">
+                        <div class="ba-box">
+                            <span>قبل التزويد</span>
+                            <strong>450</strong>
+                        </div>
+                        <div class="ba-arrow">➔</div>
+                        <div class="ba-box after">
+                            <span>بعد التزويد</span>
+                            <strong>3,450</strong>
+                        </div>
+                    </div>
+                </div>
+                <!-- النموذج 4 -->
+                <div class="ba-card">
+                    <h3>صفحة فيسبوك (Facebook Page)</h3>
+                    <div class="ba-comparison">
+                        <div class="ba-box">
+                            <span>قبل التزويد</span>
+                            <strong>5,100</strong>
+                        </div>
+                        <div class="ba-arrow">➔</div>
+                        <div class="ba-box after">
+                            <span>بعد التزويد</span>
+                            <strong>105,100</strong>
+                        </div>
+                    </div>
+                </div>
+                <!-- النموذج 5 -->
+                <div class="ba-card">
+                    <h3>حساب تيك توك شخصي</h3>
+                    <div class="ba-comparison">
+                        <div class="ba-box">
+                            <span>قبل التزويد</span>
+                            <strong>890</strong>
+                        </div>
+                        <div class="ba-arrow">➔</div>
+                        <div class="ba-box after">
+                            <span>بعد التزويد</span>
+                            <strong>10,890</strong>
+                        </div>
+                    </div>
+                </div>
+                <!-- النموذج 6 -->
+                <div class="ba-card">
+                    <h3>متجر انستغرام تجاري</h3>
+                    <div class="ba-comparison">
+                        <div class="ba-box">
+                            <span>قبل التزويد</span>
+                            <strong>2,100</strong>
+                        </div>
+                        <div class="ba-arrow">➔</div>
+                        <div class="ba-box after">
+                            <span>بعد التزويد</span>
+                            <strong>32,100</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="section-header">
+                <h2>لماذا اختيار سوشيال برو ؟</h2>
+                <p>مميزات ومعايير الخصوصية التي تجعلنا الخيار الأفضل لزيادة متابعيك ومشتركيك بأمان تام.</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px;">
+                <div style="background: #111827; padding: 30px; border-radius: 20px; border: 1px solid #1f2937; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);">
+                    <div style="font-size: 28px; margin-bottom: 12px;">🔒</div>
+                    <h3 style="font-size: 18px; font-weight: 800; color: #ffffff; margin-bottom: 8px;">حماية وخصوصية تامة</h3>
+                    <p style="color: #94a3b8; font-size: 15px; font-weight: 600;">لا نطلب كلمة المرور لحسابك أو قناتك نهائياً، ويكفي فقط وضع رابط الحساب أو القناة العامة.</p>
+                </div>
+                <div style="background: #111827; padding: 30px; border-radius: 20px; border: 1px solid #1f2937; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);">
+                    <div style="font-size: 28px; margin-bottom: 12px;">🇪🇬</div>
+                    <h3 style="font-size: 18px; font-weight: 800; color: #ffffff; margin-bottom: 8px;">متابعين ومشتركين حقيقيين 100%</h3>
+                    <p style="color: #94a3b8; font-size: 15px; font-weight: 600;">نحرص على تزويد حساباتك وقنواتك بمتابعين ومشتركين عرب ومصريين حقيقيين لضمان تفاعل قوي.</p>
+                </div>
+                <div style="background: #111827; padding: 30px; border-radius: 20px; border: 1px solid #1f2937; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);">
+                    <div style="font-size: 28px; margin-bottom: 12px;">⚡</div>
+                    <h3 style="font-size: 18px; font-weight: 800; color: #ffffff; margin-bottom: 8px;">سرعة ومتابعة مستمرة</h3>
+                    <p style="color: #94a3b8; font-size: 15px; font-weight: 600;">فريق دعم فني متواجد لمتابعة طلبك وإتمام التزويد في المواعيد المحددة بدقة خلال من يومين لـ 3 أيام.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section (12 Reviews) -->
+    <section id="reviews" class="section" style="background: #0f172a; max-width: 100%; border-top: 1px solid #1f2937; border-bottom: 1px solid #1f2937;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="section-header">
+                <h2>آراء عملائنا السعداء (12 تقييم)</h2>
+                <p>بعض من تعليقات ورأي العملاء الذين تعاملوا معنا وطلبوا خدمات التزويد بمختلف المنصات.</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div style="color: #fbbf24; margin-bottom: 10px;">★★★★★</div>
+                    <p>"خدمة ممتازة جداً، طلبت باقة الـ 30 ألف لتيك توك ووصلتني خلال يومين بالظبط والمتابعين تفاعلهم حقيقي. شكراً ليكم."</p>
+                    <h4 style="margin-top: 12px;">أحمد محمود</h4>
+                    <span>المنصورة، مصر</span>
+                </div>
+
+                <div class="review-card">
+                    <div style="color: #fbbf24; margin-bottom: 10px;">★★★★★</div>
+                    <p>"أفضل موقع تعاملت معاه لزيادة مشتركين اليوتيوب وانستغرام، الأسعار ممتازة جداً والتنفيذ دقيق في مواعيده."</p>
+                    <h4 style="margin-top: 12px;">محمد علي</h4>
+                    <span>القاهرة، مصر</span>
+                </div>
+
+                <div class="review-card">
+                    <div style="color: #fbbf24; margin-bottom: 10px;">★★★★★</div>
+                    <p>"صفحة الفيسبوك وقناة اليوتيوب عندي اتظبطت خالص بعد ما طلبت الباقات، بجد شغل محترم ومصداقية عالية جداً."</p>
+                    <h4 style="margin-top: 12px;">سارة هاني</h4>
+                    <span>الإسكندرية، مصر</span>
+                </div>
+
+                <div class="review-card">
+                    <div style="color: #fbbf24; margin-bottom: 10px;">★★★★★</div>
+                    <p>"باقة الـ 50 ألف متابع على انستغرام فتحتلي باب إعلانات كتير للمتجر بتاعي، شغل عالي ومتابعين عرب ممتازيين."</p>
+                    <h4 style="margin-top: 12px;">كريم إبراهيم</h4>
+                    <span>الجيزة، مصر</span>
+                </div>
+
+                <div class="review-card">
+                    <div style="color: #fbbf24; margin-bottom: 10px;">★★★★★</div>
+                    <p>"الدفع عن طريق انستا باي كان سريع جداً، وأول ما اترفعت صورة الحوالة التزويد بدأ فوري على حساب التيك توك."</p>
+                    <h4 style="margin-top: 12px;">عمر الشريف</h4>
+                    <span>طنطا، مصر</span>
+                </div>
+
+                <div class="review-card">
+                    <div style="color: #fbbf24; margin-bottom: 10px;">★★★★★</div>
+                    <p>"كنت خايفة الحساب يتقفل بس التزويد كان بطيء وآمن جداً على مدار يومين، خدمة عملاء محترمة جداً."</p>
+                    <h4 style="margin-top: 12px;">مريم حسن</h4>
+                    <span>الزقازيق، مصر</span>
+                </div>
+
+                <div class="review-card">
+                    <div style="color: #fbbf24; margin-bottom: 10px;">★★★★★</div>
+                    <p>"باقة الـ 3000 مشترك يوتيوب خلت القناة عندي مؤهلة لتفعيل الأرباح، والأسعار مقارنة بالمواقع التانية خرافية."</p>
+                    <h4 style="margin-top: 12px;">خالد عبد الرحمن</h4>
+                    <span>أسيوط، مصر</span>
+                </div>
+
+                <div class="review-card">
+                    <div style="color: #fbbf24; margin-bottom: 10px;">★★★★★</div>
+                    <p>"حولت عن طريق فودافون كاش والتأكيد كان خلال 10 دقائق والمتابعين مصريين ومتفاعليين جداً."</p>
+                    <h4 style="margin-top: 12px;">نهى طارق</h4>
+                    <span>الإسماعيلية، مصر</span>
+                </div>
+
+                <div class="review-card">
+                    <div style="color: #fbbf24; margin-bottom: 10px;">★★★★★</div>
+                    <p>"أفضل تجربة تزويد صفحة فيسبوك وقناة يوتيوب للشركة، الأرقام بتزيد بثبات وبدون أي نقص إطلاقاً."</p>
+                    <h4 style="margin-top: 12px;">مصطفى العوضي</h4>
+                    <span>بورسعيد، مصر</span>
+                </div>
+
+                <div class="review-card">
+                    <div style="color: #fbbf24; margin-bottom: 10px;">★★★★★</div>
+                    <p>"الواجهة سهلة وبسيطة والتحويل سريع، أنصح أي حد عايز يكبر قناته في يوتيوب أو تيك توك يتعامل معاهم."</p>
+                    <h4 style="margin-top: 12px;">ياسمين فتحي</h4>
+                    <span>الفيوم، مصر</span>
+                </div>
+
+                <div class="review-card">
+                    <div style="color: #fbbf24; margin-bottom: 10px;">★★★★★</div>
+                    <p>"السرعة والدقة والالتزام بالميعاد هي أهم ميزة فيهم، طلبنا باقة الـ 10 آلاف وكانت تجربة ممتازة."</p>
+                    <h4 style="margin-top: 12px;">شريف رمزي</h4>
+                    <span>سوهاج، مصر</span>
+                </div>
+
+                <div class="review-card">
+                    <div style="color: #fbbf24; margin-bottom: 10px;">★★★★★</div>
+                    <p>"كل المشتركين والمتابعين اللي زادوا عندي حساباتهم حقيقية وعربية، متشكرة جداً لسرعة استجابة الدعم الفني."</p>
+                    <h4 style="margin-top: 12px;">داليا النجار</h4>
+                    <span>دمياط، مصر</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About & Terms Section -->
+    <section id="about" class="section">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div class="section-header">
+                <h2>عن المنصة والشروط</h2>
+                <p>تعرف علينا أكثر واطلع على شروط الخدمة وسياسة الخصوصية الخاصة بنا.</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px;">
+                <div style="background: #111827; padding: 30px; border-radius: 20px; border: 1px solid #1f2937; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);">
+                    <h3 style="font-size: 18px; font-weight: 800; color: #818cf8; margin-bottom: 12px;">من نحن</h3>
+                    <p style="color: #94a3b8; font-size: 15px; font-weight: 600; line-height: 1.7;">منصة سوشيال برو هي وجهتك الأولى والأكثر موثوقية في مصر والعالم العربي لتعزيز حضورك الرقمي وزيادة متابعين ومشتركين حقيقيين على فيسبوك، تيك توك، انستغرام، ويوتیوب بأعلى معايير الأمان والجودة.</p>
+                </div>
+                <div style="background: #111827; padding: 30px; border-radius: 20px; border: 1px solid #1f2937; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);">
+                    <h3 style="font-size: 18px; font-weight: 800; color: #818cf8; margin-bottom: 12px;">الشروط والأحكام</h3>
+                    <p style="color: #94a3b8; font-size: 15px; font-weight: 600; line-height: 1.7;">يجب أن تكون الحسابات والقنوات المراد تزويدها عامة وليست خاصة. تتم عملية الزيادة تدريجياً خلال من يومين لـ 3 أيام لضمان حماية الحساب واستقرار المتابعين.</p>
+                </div>
+                <div style="background: #111827; padding: 30px; border-radius: 20px; border: 1px solid #1f2937; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);">
+                    <h3 style="font-size: 18px; font-weight: 800; color: #818cf8; margin-bottom: 12px;">سياسة الخصوصية</h3>
+                    <p style="color: #94a3b8; font-size: 15px; font-weight: 600; line-height: 1.7;">نحن نلتزم بحماية سرية بياناتك الشخصية وصور التحويل الخاصة بك، ولا يتم مشاركة أي معلومات مع أي طرف ثالث تحت أي ظرف من الظروف.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Support Chat Button -->
+    <div class="floating-chat" onclick="alert('شات الدعم الفني مقفل! يتطلب إتمام طلب الباقة ودفع الاشتراك أولاً لفتح الشات.')" title="شات الدعم (مغفل)">
+        💬
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>جميع الحقوق محفوظة لمنصة سوشيال برو © 2026</p>
+        </div>
+    </footer>
+
+    <!-- Checkout Modal with Proof Upload & Payment Options -->
+    <div id="checkoutModal" class="modal-overlay">
+        <div class="modal-box">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                <h3 style="font-size: 18px; font-weight: 900; color: #ffffff;">إتمام طلب الباقة والدفع</h3>
+                <button onclick="closeCheckout()" style="background: none; border: none; font-size: 18px; cursor: pointer; color: #94a3b8; font-weight: bold;">✕</button>
+            </div>
+
+            <div style="background: #1e1b4b; padding: 12px 15px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #3730a3;">
+                <p style="font-size: 11px; color: #818cf8; font-weight: 800;">الباقة المختارة:</p>
+                <h4 id="modalPackageName" style="font-size: 16px; font-weight: 900; color: #ffffff;">-</h4>
+                <p id="modalPackagePrice" style="font-size: 14px; font-weight: 800; color: #fbbf24;"></p>
+            </div>
+
+            <!-- Payment Methods Select Tab inside Modal -->
+            <div class="payment-tabs">
+                <div class="pay-tab-btn active" id="tab-insta" onclick="switchPayTab('insta')">إنستا باي</div>
+                <div class="pay-tab-btn" id="tab-orange" onclick="switchPayTab('orange')">أورانج كاش</div>
+                <div class="pay-tab-btn" id="tab-voda" onclick="switchPayTab('voda')">فودافون كاش</div>
+            </div>
+
+            <div id="pay-box-insta" class="payment-info-box">
+                <strong>بيانات إنستا باي (InstaPay):</strong><br>
+                • اسم البنك: Mashreq Bank<br>
+                • رقم الحساب: <span dir="ltr"><b>059101745454</b></span><br>
+                • IBAN: <span dir="ltr">EG480046020400000059101745454</span><br>
+                • رقم تحويل انستا باي: <span dir="ltr"><b>01225659431</b></span>
+            </div>
+
+            <div id="pay-box-orange" class="payment-info-box" style="display: none; background: rgba(154, 52, 18, 0.3); border-color: #f97316; color: #ffedd5;">
+                <strong>بيانات أورانج كاش (Orange Cash):</strong><br>
+                • رقم المحفظة للتحويل: <span dir="ltr"><b>01225659431</b></span>
+            </div>
+
+            <div id="pay-box-voda" class="payment-info-box" style="display: none; background: rgba(153, 27, 27, 0.3); border-color: #ef4444; color: #fecaca;">
+                <strong>بيانات فودافون كاش (Vodafone Cash):</strong><br>
+                • رقم المحفظة للتحويل: <span dir="ltr"><b>01036100162</b></span>
+            </div>
+
+            <form onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label>اختر المنصة</label>
+                    <select>
+                        <option>فيسبوك (Facebook)</option>
+                        <option>تيك توك (TikTok)</option>
+                        <option>انستغرام (Instagram)</option>
+                        <option>يوتيوب (YouTube)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>رابط الحساب أو القناة أو الصفحة</label>
+                    <input type="text" required placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label>رقم الهاتف للتواصل (واتساب)</label>
+                    <input type="text" required placeholder="01xxxxxxxx">
+                </div>
+                
+                <div class="form-group">
+                    <label>رفع صورة اسكرين التحويل <span style="color: #ef4444;">*</span></label>
+                    <input type="file" id="transferProof" accept="image/*" required style="padding: 8px;">
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; text-align: center; margin-top: 10px;">تأكيد إرسال الطلب والتحويل</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openCheckout(name, price) {
+            document.getElementById('modalPackageName').innerText = name;
+            document.getElementById('modalPackagePrice').innerText = price;
+            document.getElementById('checkoutModal').style.display = 'flex';
+        }
+        function closeCheckout() {
+            document.getElementById('checkoutModal').style.display = 'none';
+        }
+
+        function switchPayTab(type) {
+            document.getElementById('tab-insta').classList.remove('active');
+            document.getElementById('tab-orange').classList.remove('active');
+            document.getElementById('tab-voda').classList.remove('active');
+
+            document.getElementById('pay-box-insta').style.display = 'none';
+            document.getElementById('pay-box-orange').style.display = 'none';
+            document.getElementById('pay-box-voda').style.display = 'none';
+
+            if(type === 'insta') {
+                document.getElementById('tab-insta').classList.add('active');
+                document.getElementById('pay-box-insta').style.display = 'block';
+            } else if(type === 'orange') {
+                document.getElementById('tab-orange').classList.add('active');
+                document.getElementById('pay-box-orange').style.display = 'block';
+            } else if(type === 'voda') {
+                document.getElementById('tab-voda').classList.add('active');
+                document.getElementById('pay-box-voda').style.display = 'block';
+            }
+        }
+
+        function submitOrder(e) {
+            e.preventDefault();
+            alert('تم استلام طلبك وصورة التحويل بنجاح! سيتم مراجعة الإيصال وتزويد المتابعين والمشتركين خلال الوقت المحدد.');
+            closeCheckout();
+        }
+    </script>
+</body>
+</html>
